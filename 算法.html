@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+
+		<script>
+			/* 	function f() {
+				document.write("hhhhhh\n");
+				a();
+			}
+
+			function a() {
+				document.write("aaa\n");
+				c()
+			}
+
+			function c() {
+				document.write("bbbbbb\n");
+				d()
+			}
+
+			function d() {
+				document.write("ddd\n");
+			}
+			f();
+
+
+			function stack() {
+				this.item = [];
+				stack.prototype.push = function(element) {
+					this.item.push(element)
+				}
+
+				stack.prototype.pop = function() {
+					return this.item.pop();
+				}
+
+				stack.prototype.peek = function() {
+
+					return this.item[this.item.length - 1];
+				}
+
+
+			}
+			var s = new stack();
+			s.push(12);
+			s.push(12);
+			s.push(12);
+
+
+
+
+			function dec2bin(x) {
+				var stack = new dec2bin();
+				while (x > 0) {
+					stack.push(x % 2);
+				}
+			} */
+
+			/* 	function hasfunc(str, size) {
+					var hascode = 0;
+					for (var i = 0; i < str.length; i++) {
+						hascode = 37 * hascode + str.charCode(i);
+					}
+					var index = hascode % size;
+					return index;
+				}
+				document.write(hasfunc("abc",7));
+				document.write(hasfunc("dfa",7));
+				document.write(hasfunc("asdf",7));
+				document.write(hasfunc("ffdf",7)); */
+			var number = 0;
+			var sum = 0;
+			while (number <= 10) {
+				sum += number;
+				document.write(number + "\n")
+					++number;
+			}
+			document.write(sum)
+			document.write("<br/>")
+
+
+
+
+			var n = 10;
+			var i = 0;
+			while (n >= 0) {
+				// n=10;
+				i += n;
+				document.write(n + "\n")
+				n--;
+			}
+			document.write(i);
+			document.write("<br/>")
+
+
+
+
+			var i = 0;
+			var k = 10;
+			var n = null;
+			for (var i = 0; i <= k; i++) {
+				n += i;
+				document.write(i + "\n");
+			}
+			document.write(n + "\n");
+			document.write("<br/>")
+
+
+			var i = 10;
+			var k = null;
+			for (var i = 10; i >= 0; i--) {
+				k += i;
+				document.write(i + "\n");
+			}
+			document.write(k + "\n");
+			document.write("<br/>")
+			document.write("<br/>")
+
+
+
+
+			function c(n) {
+				var q = null;
+				while (n >= 0) {
+					q += n;
+					document.write(n + "\n");
+					n--;
+				}
+				document.write(q + "\n");
+				document.write("<br/>")
+			}
+			c(10);
+			c(9);
+			c(8);
+			document.write("<br/>")
+
+
+			function q(i) {
+				var q = 0;
+				while (i >= 0) {
+					q += i;
+					i--;
+				}
+				return q;
+			}
+			document.write(q(10) + " 我传的是 8 \n");
+			document.write("<br/>")
+			document.write(q(9) + " 我传的是 8 \n");
+			document.write("<br/>")
+			document.write(q(8) + " 我传的是 8 \n");
+
+			document.write("<br/>")
+
+			function w(c, q) {
+				document.write("<br/>")
+				document.write(c + "\n");
+				document.write("<br/>")
+				for (var i = 0; i < c.length; i++) {
+					//	document.write(c[i] + "\n"); 
+					document.write(c[i] + q + "\n");
+				}
+			}
+			var cw = [1, 2, 3, 4, 5];
+			w(cw, 5);
+
+
+			document.write("<br/>")
+
+
+			document.write("<br/>")
+
+			function show(q) {
+				console.log(q);
+				if (q) {
+					return q;
+				}
+				return "wwwwwww"
+			}
+			document.write(show("1111111"));
+			document.write("<br/>")
+			document.write(show());
+
+
+			document.write("<br/>")
+
+			function factorial(number) {
+				if (number == 0) {
+					document.write(number + "----\n");
+				} else {
+					document.write(number + "++\n");
+					document.write(factorial(number - 1) + "\n");
+					number - 1;
+				}
+			}
+			(factorial(5));
+
+			document.write("<br/>")
+			var z = 9;
+			var y = 1.1;
+			document.write(Math.sqrt(z));
+			document.write("<br/>")
+			document.write(Math.abs(y / z).toFixed(2));
+
+
+
+			function fac(n) {
+				if (n == 1) {
+					return n;
+				} else {
+					return n * fac(n - 1);
+				}
+
+			}
+			console.log(fac(5));
+
+
+			function checking(amount) {
+				this.balace = amount;
+				this.deposit = deposit;
+				this.withdraw = withdraw;
+				this.tostring = tostring;
+			}
+
+			function deposit(amount) {
+				this.balace += amount;
+				document.write("<BR/>" + this.balace)
+			}
+
+			function withdraw(amount) {
+				document.write("<BR/>-==" + amount)
+				document.write("<BR/>---" + this.balace)
+				if (amount <= this.balace) {
+					this.balace -= amount;
+					document.write("<BR/>---" + amount)
+					document.write("<BR/>---" + this.balace)
+				}
+				if (amount > this.balace) {
+					document.write("<BR/>" + "insufficient funds");
+				}
+			}
+
+			function tostring() {
+				document.write("<BR/>" + "Balance:" + this.balace);
+			}
+
+			var account = new checking(500);
+			account.deposit(1000)
+
+			account.withdraw(600);
+			account.tostring();
+
+
+			function tongxue(name1) {
+				this.age22 = age22;
+				this.age = age;
+				this.tag = tag;
+			}
+			document.write("<BR/>---");
+
+			function age22(name1) {
+				document.write(name1 + "<BR/>---");
+			}
+
+			function age(name1) {
+				this.age22(name1);
+			}
+
+			function tag(name1) {
+
+			}
+
+
+			var Ctongxue = new tongxue("zhangsan");
+
+			Ctongxue.age22("zhangsan");
+			Ctongxue.age("lishi");
+
+
+			var number = [1, 2, 1, 3, 4, 4];
+			var sum;
+			var c;
+			for (var i = 0; i < number.length; i++) {
+				//c+=(number[i]);
+				c = (number[i]);
+				if (c == number[i - 1]) {
+					//console.log(c+"++");
+					//break;
+				} else {
+					//	sum+=(number[i]);
+					sum += (number[i]);
+
+					console.log(number[i] + "-");
+
+				}
+
+			}
+			console.log(sum);
+
+			var nums = [];
+			for (var i = 0; i < 10; i++) {
+				nums[i] = i + 1;
+			}
+			var samenums = nums;
+			samenums[5] = 100;
+			console.log(samenums);
+			console.log(nums);
+
+
+
+
+
+			function copy(arr1, arr2) {
+				for (var i = 0; i < arr1.length; i++) {
+					arr2[i] = arr1[i];
+				}
+			}
+
+			var nums1 = [];
+			for (var i = 0; i < 10; i++) {
+				nums1[i] = i + 1;
+			}
+			var sames = [];
+			copy(nums1, sames);
+
+
+			console.log(sames);
+			console.log(nums1);
+
+
+			var name1 = ["a", "b", "c", "c", "e"];
+			//var s1=name1.indexOf("")
+			q = "a";
+			var position;
+			for (var i = 0; i < name1.length; i++) {
+				position = q.indexOf(name1[i]);
+				if (position == 0) {
+					console.log(name1[i] + "++");
+				} else {
+					console.log(name1[i] + "--");
+				}
+			}
+
+
+
+			var c = "a";
+
+			for (var i = 0; i < name1.length; i++) {
+				var firstpos = c.indexOf(name1[i]);
+				if (firstpos == 0) {
+					console.log(name1[i] + "****");
+				} else {
+					console.log(name1[i] + "&&&");
+				}
+			}
+
+			var dmdept = name1.splice(3, 3);
+			console.log(dmdept);
+
+			var newname = 1;
+
+			var name1 = [1, 2, 3, 4, 5];
+
+			var n = name1.length;
+
+			for (var i = n; i > 0; i--) {
+				//name1[i] = name1[i - 1];
+				console.log(name1[i - 1]);
+
+			}
+			//	name1[0] = 5;
+			//	console.log(name1);
+			function square(num) {
+				console.log(num, num * num);
+			}
+			var nums = [1, 6, 7, 45, 8, 9, 0];
+			nums.forEach(square);
+
+			function isevent(num) {
+				return num % 2 == 0;
+			}
+			var nums = [2, 4, 6];
+
+			var even = nums.every(isevent);
+
+			console.log(nums.some(isevent));
+
+			if (even) {
+				console.log("aaaaaaaa");
+			} else {
+				console.log("bbbbbb");
+			}
+
+
+			function add(running, current) {
+				return running + current;
+			}
+
+
+			var nums = [1, "a", 3, 4, 56];
+			var sum = nums.reduce(add);
+			console.log(sum.split(","));
+
+
+
+			function weekteps() {
+				this.datastore = [];
+				this.add = add;
+				this.average = average;
+			}
+
+			function add(temp) {
+				this.datastore.push(temp);
+			}
+
+			function average() {
+				var tota = 0;
+				for (var i = 0; i < this.datastore.length; i++) {
+					tota += this.datastore[i];
+				}
+				return total / this.datastore.length;
+			}
+			var thisweek = new weekteps;
+			thisweek.add(52);
+
+			console.log(thisweek.average());
+
+
+			var box = function() {}
+			box.prototype.set = function(x) {
+				this.x = x;
+			}
+			box.prototype.get = function() {
+				return this.x;
+			}
+			var box=new box();
+			box.set(10);
+			
+		</script>
+
+	</body>
+</html>
