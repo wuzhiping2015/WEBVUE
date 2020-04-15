@@ -99,9 +99,7 @@
 </template>
 
 <script>
-	import {
-		Helios
-	} from "@/assets/comment.js";
+	import {	Helios } from "@/assets/comment.js";
 	import Vue from "vue";
 
 	import chachao from '@/views/chachao.vue'
@@ -205,7 +203,6 @@
 
 
 
-
 			/* console.log("创建前：");
 			     console.log(this.$data); */
 		},
@@ -272,7 +269,8 @@
 		opacity: 0;
 		transform: translateX(100%);
 	}
-.v-enter,
+
+	.v-enter,
 		{
 		opacity: 1;
 		transform: translateX(-100%);
@@ -287,7 +285,7 @@
 
 
 	#dome {
-		padding: 4rem 0 4rem 0;
+		/* padding: 4rem 0 4rem 0; */
 	}
 
 	/* @import  'assets/element_index.css';  */

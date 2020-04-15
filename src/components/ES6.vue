@@ -1,36 +1,112 @@
 <template>
 	<div class="logo">
-		<H1>es6</H1>
+		<div style="clear: both; height: 100vh;">
+			<div style="">
+				<H1>es6</H1>
 
-		<h2>ES6 调用方法传参：{{msg}}</h2>
+				<h2>ES6 调用方法传参：{{msg}}</h2>
 
-		<h2>ES6 调用方法： {{msg1}}</h2>
-		<h2>数组：{{array}}</h2>
+				<h2>ES6 调用方法： {{msg1}}</h2>
+				<h2>数组：{{array}}</h2>
+				定时器： {{qq}} {{age}}
+				<button v-if="showbtn" @click="handleclick">click me</button>
 
-		<button v-if="showbtn" @click="handleclick">click me</button>
+				<ul>
+					<li v-for="c in book">{{c.name}}</li>
+				</ul>
 
-		<ul>
-			<li v-for="c in book">{{c.name}}</li>
-		</ul>
-		<h1>动画过度</h1>
-		ID:<input type="text" v-model="id">
-		NAME:<input type="text" v-model="name">
-		<input type="button" value="添加" @click="add()">
+			</div>
+			<div style="">
 
-		<!-- 通过 appear 特性设置节点的在初始渲染的过渡
-	         也就是页面刚加载的时候，实现过渡动画 -->
-		<transition-group tag="ul" appear>
-			<li v-for="(item,i) in list" @click="del(i)" :key="item.id">
-				<!-- v-for="(item,i) in list"  
-	           del(i)   传参不传id，改成i    ??? 这个是什么用法-->
-				{{item.id}} --- {{item.name}}
-			</li>
-		</transition-group>
+				<h1>动画过度</h1>
+				ID:<input type="text" v-model="id">
+				NAME:<input type="text" v-model="name">
+				<input type="button" value="添加" @click="add()">
+
+				<!-- 通过 appear 特性设置节点的在初始渲染的过渡
+			     也就是页面刚加载的时候，实现过渡动画 -->
+				<transition-group tag="ul" appear>
+					<li v-for="(item,i) in list" @click="del(i)" :key="item.id">
+						<!-- v-for="(item,i) in list"  
+			       del(i)   传参不传id，改成i    ??? 这个是什么用法-->
+						{{item.id}} --- {{item.name}}
+					</li>
+				</transition-group>
+			</div>
+
+		</div>
+
+		<div class="box">
+
+			<div class="box-body">
+				<div class="form-group">
+					<div class="col-sm-5">
+						<!-- 	User: "",
+
+								Status: "", -->
+						<label for="inputEmail3" class="col-sm-2 control-label">User</label>
+						<input type="email" class="form-control" v-model="User" placeholder="Email">
+					</div>
+					<div class="col-sm-5"><label for="inputPassword3" class="col-sm-2 control-label">Status</label>
+						<input type="email" class="form-control" v-model="Status" placeholder="Password">
+					</div>
+
+					<div class="col-sm-5"><label for="inputPassword3" class="col-sm-2 control-label">搜索</label>
+						<input type="email" class="form-control" v-model="keywork" placeholder="搜索">
+					</div>
+					<div class="box-footer">
+						<button type="submit" class="btn btn-default">取消</button>
+						<button type="submit" class="btn btn-info pull-right" @click="setstudent">确定</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="box-header">
+				<h3 class="box-title">Responsive Hover Table</h3>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body table-responsive no-padding">
+
+				<table class="table table-hover">
+					<tbody>
+						<tr>
+							<th>ID</th>
+							<th>User</th>
+							<th>Date</th>
+							<th>Status</th>
+							<th>Reason</th>
+						</tr>
+
+						<tr v-for="(v,i) in search(keywork)">
+							<td>{{i}}</td>
+							<td>{{v.User}}</td>
+							<td>{{v.Date | dCurrency}}</td>
+							<td>{{v.Status}}</td>
+							<td> <button type="submit" class="btn btn-default" @click="delstatus(i)"> 删除</button></td>
+						</tr>
+
+					</tbody>
+				</table>
+
+
+			</div>
+			<!-- /.box-body -->
+		</div>
 
 	</div>
+
+
+
 </template>
 
 <script>
+	import Vue from "vue"
+
+	var toast = new Vue({
+		el: ''
+	});
+
+
 	function f() {
 		let n = 5;
 		if (true) {
@@ -51,13 +127,7 @@
 
 	console.log(example());
 
-	function authorize(user, action) {
-		if (!user.hasPrivilege(action)) {
-			throw new Error(
 
-			)
-		}
-	}
 
 	window.a = 1;
 	a = 2;
@@ -72,8 +142,38 @@
 		});
 	};
 
-	//ES6 对象
+	const pi = 12222.22;
+	console.log(pi);
+
+	const person = {
+		username: "小暖",
+		age: 18,
+		sayhello: () => {
+			setInterval(() => {
+				vm.qq = ("我叫 -" + vm.username + "-我今年-" + vm.age + "-岁");
+			}, 5000);
+		}
+	};
+	person.sayhello();
+
 	let vm = {};
+
+
+	class cale {
+		constructor() {
+			vm.age = ("calc constructor");
+		}
+		add(a, b) {
+			return a + b;
+		}
+		add1() {
+			return 1 + 3 + "aaaaaa";
+		}
+	}
+	var cbd = new cale();
+	cbd.constructor();
+
+
 
 	let data = {
 		argum: cbd, //引用方法
@@ -84,6 +184,7 @@
 		showbtn: true,
 		msg1: "",
 		array: "",
+		keywork: "",
 		book: [{
 				name: "<<Javascript 高级程序设计>>"
 			},
@@ -112,50 +213,42 @@
 				id: 4,
 				name: '魏忠贤'
 			}
+		],
+
+		User: "",
+		Status: "",
+		studetns: [{
+				ID: 1,
+				User: "小王",
+				Date: "小王11",
+				Status: "小王22",
+				Reason: "小王33",
+			},
+			{
+				ID: 2,
+				User: "小王",
+				Date: "小王11",
+				Status: "小王22",
+				Reason: "小王33",
+			},
+			{
+				ID: 3,
+				User: "小王",
+				Date: "小王11",
+				Status: "小王22",
+				Reason: "小王33",
+			},
+			{
+				ID: 4,
+				User: "小王",
+				Date: "小王11",
+				Status: "小王22",
+				Reason: "小王33",
+			}
 		]
+
 	};
 
-	/* class Calc {
-	  constructor() {
-	    console.log("calc constructor");
-	    console.log(vm);
-	  }
-	  add(a, b) {
-	    return a + b;
-	  }
-	}
-
-	var c = new Calc();
-	c.constructor();
-
-	console.log(c.add(1, 2)); */
-
-	const pi = 12222.22;
-	console.log(pi);
-
-	const person = {
-		username: "小暖",
-		age: 18,
-		sayhello: () => {
-			setInterval(() => {
-				console.log("我叫 -" + vm.username + "-我今年-" + vm.age + "-岁");
-			}, 5000);
-		}
-	};
-	person.sayhello();
-
-	class cale {
-		constructor() {
-			console.log("calc constructor");
-		}
-		add(a, b) {
-			return a + b;
-		}
-		add1() {
-			return 1 + 3 + "aaaaaa";
-		}
-	}
-	var cbd = new cale();
 
 	export default {
 		name: "logo",
@@ -240,6 +333,48 @@
 			del(i) {
 				this.list.splice(i, 1); // i 的用法？？
 			},
+
+			setstudent() {
+				this.studetns.push({
+					User: this.User,
+					Status: this.Status,
+				});
+				Vue.prototype.$message("添加成功");
+				this.User = this.Status = "";
+			},
+			delstatus(i) {
+
+				toast.$confirm("此操作将永久删除该数据，是否继续", "提示", {
+					confirmButtonText: "确定",
+					cancelButtonText: '取消',
+					type: "warning"
+				}).then(() => {
+					vm.studetns.splice(i, 1);
+					/* toast.$notify({
+						title: '成功',
+						message: '删除成功',
+						type: 'success',
+						duration: 1000
+					}); */
+					this.$message.success("删除成功");
+				});
+			},
+			search(key) {
+				var newList = [];
+				this.studetns.forEach(item=>{
+					if(item.User.indexOf(key)!=-1){
+						newList.push(item);
+					}
+				});
+				return newList
+			/* 	 return  this.studetns.filter(item => {
+					if (item.User.includes(key)) {
+						return item
+					}
+				}) */
+
+			}
+
 		},
 		//我是一个过滤器
 		filters: {},
@@ -254,6 +389,8 @@
 </script>
 
 <style scoped>
+	@import "../assets/css/AdminLTE.min.css";
+
 	li {
 		border: 1px dashed #999;
 		margin: 5px;
