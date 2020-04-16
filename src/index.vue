@@ -34,6 +34,7 @@
 					<!--    <router-link to="/text" tag="li">text</router-link> -->
 					<router-link to="/element" tag="li">element</router-link>
 					<router-link to="/Hello" tag="li">element ui</router-link>
+					
 				</ul>
 			</div>
 		</div>
@@ -54,6 +55,8 @@
 				<router-link to="/shop" tag="li">商城</router-link>
 
 				<router-link to="/model" tag="li">移动端</router-link>
+				
+				<router-link to="/biaoda" tag="li">表单</router-link>
 			</ul>
 		</div>
 
@@ -99,7 +102,9 @@
 </template>
 
 <script>
-	import {	Helios } from "@/assets/comment.js";
+	import {
+		Helios
+	} from "@/assets/comment.js";
 	import Vue from "vue";
 
 	import chachao from '@/views/chachao.vue'

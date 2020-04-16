@@ -48,7 +48,7 @@
 						<input type="email" class="form-control" v-model="User" placeholder="Email">
 					</div>
 					<div class="col-sm-5"><label for="inputPassword3" class="col-sm-2 control-label">Status</label>
-						<input type="email" class="form-control" v-model="Status" placeholder="Password">
+			<input type="email" class="form-control" v-model="Status" placeholder="Password" @keyup.add2="setstudent">
 					</div>
 
 					<div class="col-sm-5"><label for="inputPassword3" class="col-sm-2 control-label">搜索</label>
@@ -106,6 +106,8 @@
 		el: ''
 	});
 
+//自定义全局案件修饰符号
+Vue.config.keyCodes.add2=113;
 
 	function f() {
 		let n = 5;

@@ -159,6 +159,13 @@ export default new Router({
 					name: "anli",
 					component: () => import('@/views/anli.vue')
 				},
+				
+				{
+					path: "/biaoda",
+					name: "biaoda",
+					component: () => import('@/views/biaodan.vue')
+				},
+				
 
 
 				{
