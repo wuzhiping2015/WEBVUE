@@ -34,7 +34,6 @@
 					<!--    <router-link to="/text" tag="li">text</router-link> -->
 					<router-link to="/element" tag="li">element</router-link>
 					<router-link to="/Hello" tag="li">element ui</router-link>
-					
 				</ul>
 			</div>
 		</div>
@@ -55,8 +54,6 @@
 				<router-link to="/shop" tag="li">商城</router-link>
 
 				<router-link to="/model" tag="li">移动端</router-link>
-				
-				<router-link to="/biaoda" tag="li">表单</router-link>
 			</ul>
 		</div>
 
@@ -208,6 +205,7 @@
 
 
 
+
 			/* console.log("创建前：");
 			     console.log(this.$data); */
 		},
@@ -274,8 +272,7 @@
 		opacity: 0;
 		transform: translateX(100%);
 	}
-
-	.v-enter,
+.v-enter,
 		{
 		opacity: 1;
 		transform: translateX(-100%);
@@ -290,7 +287,7 @@
 
 
 	#dome {
-		/* padding: 4rem 0 4rem 0; */
+		padding: 4rem 0 4rem 0;
 	}
 
 	/* @import  'assets/element_index.css';  */

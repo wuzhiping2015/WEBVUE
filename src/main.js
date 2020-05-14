@@ -172,4 +172,3 @@ Vue.filter('dTofixed', function(value) {
       }
   }
 })
-

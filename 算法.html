@@ -7,6 +7,9 @@
 	<body>
 
 		<script>
+			var value= "0,0,0,0,0,0";
+			var b=value.split(",");
+			console.log(b);
 			/* 	function f() {
 				document.write("hhhhhh\n");
 				a();
@@ -406,27 +409,7 @@
 
 
 
-			function weekteps() {
-				this.datastore = [];
-				this.add = add;
-				this.average = average;
-			}
 
-			function add(temp) {
-				this.datastore.push(temp);
-			}
-
-			function average() {
-				var tota = 0;
-				for (var i = 0; i < this.datastore.length; i++) {
-					tota += this.datastore[i];
-				}
-				return total / this.datastore.length;
-			}
-			var thisweek = new weekteps;
-			thisweek.add(52);
-
-			console.log(thisweek.average());
 
 
 			var box = function() {}
@@ -436,9 +419,9 @@
 			box.prototype.get = function() {
 				return this.x;
 			}
-			var box=new box();
+			var box = new box();
 			box.set(10);
-			
+
 		</script>
 
 	</body>
