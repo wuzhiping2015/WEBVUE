@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+
+		<script>
+			function stack() {
+				//中的属性
+				this.item = [];
+				// 将元素压下去
+				stack.prototype.push = function(element) {
+					this.item.push(element)
+				}
+				//顶部删除元素
+				stack.prototype.pop = function() {
+					return this.item.pop();
+				}
+				//返回元素查看
+				stack.prototype.peek = function() {
+					return this.item[this.item.length - 1];
+				}
+				//是否有元素
+				stack.prototype.isEmpty = function() {
+					return this.item.length == 0;
+				}
+				//元素个数
+				stack.prototype.size = function() {
+					return this.item.length;
+				}
+				//返回字符串
+				stack.prototype.toString = function() {
+					var resultstaing = "";
+					for (var i = 0; i < this.item.length; i++) {
+
+						return resultstaing += this.item[i] + ""
+					}
+					return resultstaing;
+				}
+
+			}
+
+			/* s.push(10);
+			s.push(20);
+			s.push(30);
+			console.log(s);
+			//console.log(s.pop()+"POP");
+			console.log(s.peek() + "peek");
+			console.log(s.isEmpty());
+			console.log(s.size());
+			console.log(s.toS()); */
+
+			/* function dec2bin(decnumber) {
+				var sta = new stack();
+				while (decnumber > 0) {
+					sta.push(decnumber % 2);
+					decnumber = Math.floor(decnumber / 2);
+				}
+				var bin = "";
+				while (!sta.isEmpty()) {
+					decnumber += sta.pop();
+				}
+				console.log(sta.pop());
+
+				console.log(sta.toString());
+
+			} */
+			//	(dec2bin(100));
+			//	(dec2bin(200));
+
+
+
+
+
+			function stacking() {
+
+				this.items = [];
+
+				stacking.prototype.push = function(value) {
+					this.items.push(value);
+				}
+				stacking.prototype.pop = function() {
+					return this.items.pop();
+				}
+				stacking.prototype.peek = function() {
+					return this.items[this.items.length - 1];
+				}
+				stacking.prototype.isempty = function() {
+					return this.items.length = 0;
+				}
+				stacking.prototype.clear = function() {
+					return this.items = [];
+				}
+				stacking.prototype.size = function() {
+					return this.items.length;
+				}
+				stacking.prototype.tostring = function() {
+					var val = ""
+					for (var i = 0; i < this.items.length; i++) {
+						val += this.items[i]
+					}
+					return val;
+				}
+			}
+
+			var stac = new stacking();
+			stac.push(5);
+			stac.push(6);
+			stac.push(7);
+
+			console.log(stac);
+			console.log(stac.tostring());
+
+			function dec2bin(value) {
+				var sta = new stacking;
+
+				while (value > 0) {
+					
+					sta.push(value % 2);
+					value = Math.floor(value / 2);
+					console.log(value);
+				}
+				/* var binstring = "";
+					 while (sta.isempty == 0) {
+						binstring += sta.pop();
+					} */
+				console.log(sta);
+				console.log(sta.tostring());
+				//return binstring
+
+			}
+			//(dec2bin(100));
+
+			(dec2bin(300));
+		</script>
+
+	</body>
+</html>

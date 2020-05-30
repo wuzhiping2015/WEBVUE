@@ -1,0 +1,164 @@
+
+
+
+
+
+
+Vue CLI3--运行单个 * .vue 文件
+1. 安装全局扩展
+npm install - g @vue / cli - service - global
+2. 运行.vue文件
+如运行Hello.vue:
+	vue serve Hello.vue
+3. 浏览器访问
+http: //localhost:8080/
+
+
+ 
+
+
+
+/*小测试笔记*/
+   
+  还可以这样路由跳转
+ computed: {
+      isActive () {
+        return this.href === window.location.pathname
+      }
+    }
+
+
+webpack.base.conf.js
+
+ options: {
+          hotReload: false // 关闭热重载
+        }
+/*  options: vueLoaderConfig * /  //默认
+
+
+
+
+
+NPM  打包 运行
+ 
+  1, 安装 ：npm install -g http-server 
+ 
+  
+  2. npm run build
+  
+  3.serve dist
+  
+  4. 进入dist 目录  运行  http-server
+  
+  
+  
+  
+  
+  
+  工具包：
+  
+    ESlint  检查
+	
+	安装：
+	1.npm install eslint-loader;
+	
+  使用方法：
+  <---webpack.config.js-->
+  module.exports={
+	  //...
+	  module:{
+		  loaders:[
+		  {text:/\.js$/,loader:"eslint-loader",exclude:/node_modules/}
+		  ]
+	  }
+  }
+  
+  
+  
+  强大工具：
+  
+     scrat  UC 团队管理工具
+	 
+	 VUE-devtools 调试工具
+  
+
+    
+ data 获取数据
+ 
+console.log(vm.name,vm);
+  
+vm.name="xiaoxiao";
+
+console.log(vm._data.name,vm.name);
+
+
+
+调试工具：google
+
+vue devtoo
+
+postman  测试工具
+
+jsonplaceholder 模拟数据
+
+
+D:\Documents\Tencent Files\376649868\FileRecv
+
+json:server
+
+https://github.com/typicode/json-server
+
+
+
+//******************
+2020**************3-- 26*********************
+//******************
+
+
+组件:
+elementui mint-ui,cubeui,vant
+
+
+
+vue+django打造的一个电商项
+
+
+Vue2.x点餐系统(axios路由/vuex)
+webpack Vue 命令行，开发流程
+
+组件通信
+
+表单输入验证处理  用户输入
+
+
+使用和创建指令
+
+使用过滤器和混入优化程序
+
+动画过度
+
+使用vue-resourec通过http 连接服务器
+
+VUEJS应用用路由
+
+VUEX 管理状态
+
+部署vueJS应用
+
+使用Axios 替代vue-resourec通过http
+
+VueRouter实现原理-手写VueRouter
+
+Vuex实现原理-手写Vuex
+
+自己封装axios 及拦截器
+
+开发自定义组件
+
+
+
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   

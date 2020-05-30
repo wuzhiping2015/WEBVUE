@@ -7,9 +7,73 @@
 	<body>
 
 		<script>
-			var value= "0,0,0,0,0,0";
-			var b=value.split(",");
+			var value = "0,0,0,0,0,0";
+			var b = value.split(",");
 			console.log(b);
+
+
+
+
+			document.cookie = "haha=hello=123&word=456";
+
+			var str = "abc" + "=" + escape(111111); //编码
+			if (2 > 0) { //为0时不设定过期时间，浏览器关闭时cookie自动消失
+				var date = new Date();
+				var ms = 2 * 3600 * 1000;
+				date.setTime(date.getTime() + ms);
+				str += "; expires=" + date.toGMTString();
+			}
+			console.log(str);
+			document.cookie = str;
+
+
+
+
+			function checkCookie() {
+				var user = getCookie("username");
+				if (user != "") {
+					alert("再次欢迎您，" + user);
+				} else {
+					user = prompt("请输入姓名：", "");
+					if (user != "" && user != null) {
+						setCookie("username", user, 30);
+					}
+				}
+			}
+			checkCookie();
+
+
+
+			function getCookie(cname) {
+				var name = cname + "=";
+				var decodedCookie = decodeURIComponent(document.cookie);
+				var ca = decodedCookie.split(';');
+				for (var i = 0; i < ca.length; i++) {
+					var c = ca[i];
+					while (c.charAt(0) == ' ') {
+						c = c.substring(1);
+					}
+					if (c.indexOf(name) == 0) {
+						return c.substring(name.length, c.length);
+					}
+				}
+				return "";
+			}
+
+
+			function setCookie(cname, cvalue, exdays) {
+				var d = new Date();
+				d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+				 var expires = "expires=" + d.toGMTString();
+				console.log(555555555555);
+				document.cookie = cname + "=" + cvalue + ";" + expires  ;
+			}
+
+			//setCookie("username", 111111111111, 30);
+
+
+
+
 			/* 	function f() {
 				document.write("hhhhhh\n");
 				a();
@@ -422,6 +486,171 @@
 			var box = new box();
 			box.set(10);
 
+
+
+			var number = 1;
+			var sum = 0;
+			while (number <= 10) {
+				sum += number;
+				console.log(number + "-" + sum);
+				++number;
+			}
+
+			function factorial1(number) {
+				var product = 1;
+				for (var i = number; i >= 1; i--) {
+					product *= i;
+					console.log(product + "-" + i);
+				}
+				console.log(product);
+			}
+			(factorial1(4));
+
+
+
+
+
+			//递归
+			function factorial2(number) {
+				if (number == 1) {
+					return (number);
+				} else {
+					return (number * factorial2(number - 1));
+				}
+			}
+			console.log(factorial2(5));
+
+
+			function checking(amoung) {
+				this.balance = amoung;
+				this.deposit = deposit;
+				this.withdraw = withdraw;
+				this.tostring = tostring;
+			}
+
+			function deposit(amoung) {
+				this.balace += amoung;
+			}
+
+			function withdraw(amoung) {
+				if (amoung <= this.balance) {
+					this.balace -= amoung;
+				}
+				if (amoung > this.balace) {
+					console.log("infufficient funds");
+				}
+			}
+
+			function tostring() {
+				return "balanc" + this.balace;
+			}
+
+			var account = new checking(500);
+			account.deposit(1000);
+			console.log(account.tostring());
+			account.tostring();
+			account.withdraw(750);
+			console.log(account.tostring());
+			account.withdraw(800);
+			console.log(account.tostring());
+
+
+			var nums = [];
+			for (var i = 0; i < 10; i++) {
+				nums["a" + i] = i + 1;
+			}
+			console.log(nums);
+			console.log(nums["a4"]);
+
+			var name = ["a", "b", "c", "d"];
+			var name1 = "c";
+			var firstpos = name.indexOf(name1);
+			console.log("first found--" + name + "---at position--" + firstpos);
+			var lastpos = name.lastIndexOf(name1);
+			console.log("last foun--" + name + "--at position--" + lastpos);
+
+
+
+			function create(file) {
+				var arr = read(file).split("\n");
+				for (var i = 0; i < arr.length; i++) {
+					arr[i] = arr[i].trim();
+				}
+				return arr;
+			}
+
+			/* 	var movielist = new list();
+				for (var i = 0; i < movies.length; i++) {
+					movielist.append(movies[i]);
+				} */
+
+
+
+
+			function showscope() {
+				let scope = "ceshi";
+				return scope;
+			}
+			var scope = "global";
+			console.log(scope);
+			console.log(showscope());
+
+			var jj = 0;
+			while (jj < 6) {
+				if (2 == jj) {
+					//	continue;
+				} else {
+					console.log("hello world-" + jj);
+				}
+				jj++;
+			}
+
+			function fact(n) {
+				if (n == 1) {
+					return (n);
+				} else {
+					return (n * fact(n - 1));
+				}
+			}
+			console.log(fact(n));
+
+
+
+			//数组**************************
+			var number = [];
+			number.length = 10;
+			number.fill("10")
+			console.log(number);
+			//设置第一条数据
+			number[0] = {
+				a: "1",
+				b: [1, 2, 3],
+				c: 3
+			}
+			console.log(Array.isArray(number));
+
+
+
+			let array = new Array();
+			//array.length = 10;
+
+
+			let qq = 0;
+			while (qq < 5) {
+				array[qq] = qq;
+				qq++;
+			}
+			//array[1].fill("00000");
+			console.log(array);
+			array.length = 10;
+			array.fill("00000");
+			console.log(array);
+
+			var j = array.length;
+			while (j >= 0) {
+				console.log(j);
+				j--;
+			}
 		</script>
 
 	</body>
