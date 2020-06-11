@@ -61,6 +61,8 @@
 
 		<div class="headertop">
 			<h3> 路由当前高亮</h3>
+
+			111111---<image :src="imgsrc"></image>
 			<span @click="goto('/ceshi')" class="ceshi" :class="{on:'/ceshi'===$router.history.current.path}">
 				{{$router.history.current.path}}
 				路由高亮 魔板</span>
@@ -113,8 +115,9 @@
 
 	let data = {
 		ishow: false,
-		title: "首页我的订单"
+		title: "首页我的订单",
 		/* src1: require('assets/images/a.gif'), */
+		imgsrc: "assets/images/a.gif"
 	};
 	let vm = new Vue({});
 	let app = {};
@@ -164,9 +167,6 @@
 			/*  $("body").resize();
 			   console.log(this.$data); */
 		},
-
-
-
 
 
 		methods: {
@@ -272,7 +272,8 @@
 		opacity: 0;
 		transform: translateX(100%);
 	}
-.v-enter,
+
+	.v-enter,
 		{
 		opacity: 1;
 		transform: translateX(-100%);

@@ -103,6 +103,19 @@
         z: "一个大的测试文件"
       }
     });
+	
+	function ispromise(val){
+		return (isDef(val) && typeof val.then==="function" && typeof val.catch=="function")
+	}
+	
+	function tostring(val){
+		return val=null ? "" :Array.isArray(val)|| (isPlainObject(val) && val.toString()===_tostring)?JSON.stringify(val,null,2):string(val)
+	}
+	
+	function tonumber(val){
+		var n=parseFloat(val);
+		return isNaN(n)?val:n;
+	}
   </script>
 
 </body>
