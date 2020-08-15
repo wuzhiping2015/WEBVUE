@@ -43,7 +43,7 @@ export default new Router({
 		},
 
 		//配置Error
-		{
+	 	{
 			path: "/Error",
 			name: "Error",
 			component: Error
@@ -260,7 +260,7 @@ export default new Router({
 			]
 
 		},
-		{
+		 {
 			path: '*',
 			//component:Error  也可以这样写
 			component: () => import('@/views/Error.vue') // 或者使用component也可以的

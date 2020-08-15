@@ -1,205 +1,427 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<html xmlns="http://www.w3.org/1999/xhtml">
 
-      <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>vue</title>
-      </head>
-
-
-
-
-      <link rel="stylesheet" href="src/assets/css/bootstrap.min.css?2019827" />
-      <link rel="stylesheet" href="src/assets/css/global.css?2019827" />
-      <!-- Font Awesome -->
-      <link rel="stylesheet" href="src/assets/css/font-awesome.min.css?2019827" />
-      <!-- Theme style -->
-      <link rel="stylesheet" href="src/assets/css/AdminLTE.min.css?2019827" />
-      <link rel="stylesheet" href="src/assets/css/skins/skin-black.min.css?2019827" />
-      <link rel="stylesheet" href="src/assets/css/index.css?2019827">
-
-
-
-      <script type="text/javascript" src="src/assets/js/jquery.js"></script>
-      <script type="text/javascript" src="src/assets/js/vue.js"></script>
-      <script type="text/javascript" src="src/assets/js/index.js"></script>
-      <script type="text/javascript" src="src/assets/js/adminlte.js"></script>
-
-
-  </head>
-
-  <body class="skin-blue sidebar-mini" style="height: auto; min-height: 100%;">
-    <div id="vm1">
-      <div class="wrapper" style="height: auto; min-height: 100%;">
-        <Elementui></Elementui>
-
-        <message content="content"></message>
-
-        <div class="elementui">
-          <el-row>
-            <el-button>默认按钮</el-button>
-            <el-button type="primary">主要按钮</el-button>
-            <el-button type="success">成功按钮</el-button>
-            <el-button type="info">信息按钮</el-button>
-            <el-button type="warning">警告按钮</el-button>
-            <el-button type="danger">危险按钮</el-button>
-          </el-row>
-          <el-row>
-            <el-button plain>朴素按钮</el-button>
-            <el-button type="primary" plain>主要按钮</el-button>
-            <el-button type="success" plain>成功按钮</el-button>
-            <el-button type="info" plain>信息按钮</el-button>
-            <el-button type="warning" plain>警告按钮</el-button>
-            <el-button type="danger" plain>危险按钮</el-button>
-          </el-row>
-          <el-row>
-            <el-button round>圆角按钮</el-button>
-            <el-button type="primary" round>主要按钮</el-button>
-            <el-button type="success" round>成功按钮</el-button>
-            <el-button type="info" round>信息按钮</el-button>
-            <el-button type="warning" round>警告按钮</el-button>
-            <el-button type="danger" round>危险按钮</el-button>
-          </el-row>
-          <el-row>
-
-            <el-button type="primary" icon="el-icon-edit" circle></el-button>
-            <el-button type="success" icon="el-icon-check" circle></el-button>
-            <el-button type="info" icon="el-icon-message" circle></el-button>
-            <el-button type="warning" icon="el-icon-star-off" circle></el-button>
-            <el-button type="danger" icon="el-icon-delete" circle></el-button>
-          </el-row>
-        </div>
-
-        <myconent qw="组件传值" content="mycontent" title="1111"></myconent>
-
-
-
-        <img :src="src" class="width">
-
-
-
-        <input type="text" v-model="message" />
-        <mycomment :message="message" tip="tip```"></mycomment>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>vue</title>
+	</head>
 
 
 
 
-      </div>
-    </div>
-    <script>
-      //父组件传值
-      Vue.component("mycomment", {
-        props: ['message', "tip"],
-        template: `<p>{{'父组件传值腹肌逐渐船体：'+message}}- {{bb}} -{{tip}}</p>`,
-        data: function() {
-          return {
-            qq: message,
-            bb: "abbbbbbb"
-          }
-        },
-        updated() {
-          console.log(this.$data + "````````````");
-        },
-        mounted() {
-          console.log(this.$data);
-        }
-      })
-
-      //组件1
-      var message = Vue.extend({
-        props: ["content"],
-        template: `<h1>VUE Element</h1>`
-      });
-      Vue.component("message", message);
+	<link rel="stylesheet" href="src/assets/css/bootstrap.min.css?2019827" />
+	<link rel="stylesheet" href="src/assets/css/global.css?2019827" />
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="src/assets/css/font-awesome.min.css?2019827" />
+	<!-- Theme style -->
+	<link rel="stylesheet" href="src/assets/css/AdminLTE.min.css?2019827" />
+	<link rel="stylesheet" href="src/assets/css/skins/skin-black.min.css?2019827" />
+	<link rel="stylesheet" href="src/assets/css/index.css?2019827">
 
 
-      //组件2
-      let html =
-        `<div><h3>{{title==1111}}   {{title}}-{{content}}-{{desc}} - {{abcd}}  -  {{qw}}-{{trues}}</h3>
-         <el-button type="primary" plain @click='alert'>{{name}}</el-button>
-            <img :src="src" :class=[width]>
-        </div>`;
-      let html1 = `<p>这是一个测试文件</p>`;
 
-      var myconponent = Vue.component("myconent", {
-        props: ["title", "content", 'qw'],
-        data: function() {
-          return {
-            desc: "124",
-            abcd: "444444",
-            trues: true,
-            name: "组件事件",
-            src: 'dist/static/img/11.d25a6cc.gif',
-            width: "width"
-          }
-        },
-        template: html,
-        methods: {
-          alert: function() {
-            this.trues = !this.trues;
-            this.abcd = 12222;
-          }
-        },
-        created() {
-          console.log(this.$data);
-          // console.log("创建完成：");
-        },
-      })
+	<script type="text/javascript" src="src/assets/js/jquery.js"></script>
+	<script type="text/javascript" src="src/assets/js/vue.js"></script>
+	<script type="text/javascript" src="src/assets/js/index.js"></script>
+	<script type="text/javascript" src="src/assets/js/adminlte.js"></script>
 
 
-      //组件3
-      Vue.component("Elementui", {
-        props: [],
-        data: function() {
-          return {}
-        },
-        template: `<div class="row">
-            <div class="box-body no-padding" style="">
-              <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#"><i class="fa fa-inbox"></i> Inbox
-                  <span class="label label-primary pull-right">12</span></a></li>
-                <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
-              </ul>
-            </div>
-         </div>`,
-        //事件
-        methods: {
+</head>
 
-        }
-      });
+<body class="skin-blue sidebar-mini" style="height: auto; min-height: 100%;">
+	<div id="vm1">
+		<div class="wrapper" style="height: auto; min-height: 100%;">
+			<Elementui></Elementui>
 
-      var data = {
-        src: 'dist/static/img/11.d25a6cc.gif',
-        class: 'width',
-        message: "父亲组件传递数值"
-      }
-      var vm1 = new Vue({
-        el: '#vm1',
+			<message content="content"></message>
 
-        data: data,
+			<div class="elementui">
+				<el-row>
+					<el-button>默认按钮</el-button>
+					<el-button type="primary">主要按钮</el-button>
+					<el-button type="success">成功按钮</el-button>
+					<el-button type="info">信息按钮</el-button>
+					<el-button type="warning">警告按钮</el-button>
+					<el-button type="danger">危险按钮</el-button>
+				</el-row>
+				<el-row>
+					<el-button plain>朴素按钮</el-button>
+					<el-button type="primary" plain>主要按钮</el-button>
+					<el-button type="success" plain>成功按钮</el-button>
+					<el-button type="info" plain>信息按钮</el-button>
+					<el-button type="warning" plain>警告按钮</el-button>
+					<el-button type="danger" plain>危险按钮</el-button>
+				</el-row>
+				<el-row>
+					<el-button round>圆角按钮</el-button>
+					<el-button type="primary" round>主要按钮</el-button>
+					<el-button type="success" round>成功按钮</el-button>
+					<el-button type="info" round>信息按钮</el-button>
+					<el-button type="warning" round>警告按钮</el-button>
+					<el-button type="danger" round>危险按钮</el-button>
+				</el-row>
+				<el-row>
 
-        //过滤器
-        filters: {
+					<el-button type="primary" icon="el-icon-edit" circle></el-button>
+					<el-button type="success" icon="el-icon-check" circle></el-button>
+					<el-button type="info" icon="el-icon-message" circle></el-button>
+					<el-button type="warning" icon="el-icon-star-off" circle></el-button>
+					<el-button type="danger" icon="el-icon-delete" circle></el-button>
+				</el-row>
+			</div>
 
-        },
-
-        watch: {
-
-        }
+			<myconent qw="组件传值" content="mycontent" title="eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"></myconent>
 
 
-      });
 
-      //*************事件处理器
-    </script>
+			<img :src="src" class="width">
 
-  </body>
-  <style scoped="">
-    .width {
-      width: 60px;
-    }
-  </style>
+
+
+			<input type="text" v-model="message" />
+			<mycomment :message="message" tip="tip```"></mycomment>
+
+
+			<div v-html="htmlsss"></div>
+			<div style="font-size: 20px;">
+				<input type="checkbox" v-model="checkboxtrue" @change="checkbox()" />
+				<ol style="font-size: 20px;">
+					<li v-for="(v,i) in datalength">
+						<input type="checkbox" v-model="checkdata" :value="v"> {{v}}
+					</li>
+				</ol>
+				<p>合计：{{checkdata}}
+					<br /> {{ hanhsu()}}</p> --- {{jisuan}} // {{watch11}}
+			</div>
+			<input type="text" v-model="watch11" />
+			<input type="button" value="测试" @click.stop="warn124('aaa', $event)">
+		</div>
+	</div>
+
+
+	<div id="example">
+		<div id="example-1" style="font-size: 30px;">
+			<button @click="show = !show">3.Toggle render4.</button>
+			<br>
+
+			<label for="a">
+				<input v-model="view" type="radio" value="v-a" name="view"> aa</label>
+
+			<label for="b">
+				<input v-model="view" type="radio" value="v-b" name="view">bbb</label>
+
+
+			<component v-bind:is="view"></component>
+
+
+
+			<button @click="eat">自定义事件</button>
+			<h1>{{view11 | revereve }} ---自定义过滤器</h1>
+
+		</div>
+
+
+	</div>
+
+	<script>
+		/* Vue.component("mycomponent", {
+													template: `<div>测试一个工厂方式</div>`,
+													
+												}); */
+
+		let va =
+			`<div class="FYB_RD">
+	<h1>WWWWWWWWWWWWWWWWWWWW</h1>	<h1>WWWWWWWWWWWWWWWWWWWW</h1>	<h1>WWWWWWWWWWWWWWWWWWWW</h1>
+    </div>`;
+
+		let vm22=new Vue({
+			el: '#example',
+			data: {
+				show: true,
+				view: 'v-a',
+				view11: '2222222'
+			},
+			created() {
+				/* this.$on("eat",function(fruit){
+					alert("1111111 自定义事件");
+				}); */
+			},
+			components: {
+				'v-a': {
+					template: va
+				},
+				'v-b': {
+					template: '<div>Component11111111111111 B</div>'
+				}
+			},
+			methods: {
+				eat() {
+					alert("1111111 自定义事件");
+					this.$emit("eat", "aaa");
+				}
+			}
+		});
+
+		Vue.filter("revereve", function () {
+			return "revereverevereverevereve";
+		});
+		vm22.eat();
+
+		var data = {
+			src: 'dist/static/img/11.d25a6cc.gif',
+			class: 'width',
+			message: "父亲组件传递数值",
+			htmlsss: "<h1>数组购物车</h1>",
+			watch11: `这不是你的错`,
+			watch12: `这不是你的错2222`,
+			checkboxtrue: false,
+			datalength: [{
+					a: "1",
+					b: "2",
+					c: "3"
+				},
+				{
+					a: "11",
+					b: "22",
+					c: "33"
+				},
+				{
+					a: "111",
+					b: "222",
+					c: "333"
+				},
+			],
+			checkdata: [],
+		}
+
+
+		var vm1 = new Vue({
+			el: '#vm1',
+			data: data,
+
+			/* //事件 */
+			methods: {
+				Login() {
+					toast.$message({
+						message: "您好,项目正紧张开发中",
+						type: 'success',
+						duration: 1000
+					});
+				},
+				hanhsu() {
+					let sum = 0;
+					for (var i in this.checkdata) {
+						sum += Number(this.checkdata[i].a);
+					}
+					return sum;
+				},
+				checkbox() {
+					if (this.checkboxtrue) {
+						this.checkdata = this.datalength;
+					} else {
+						this.checkdata = [];
+					}
+
+					console.log("aaa", this.checkboxtrue);
+				},
+				warn124(message, event) {
+					console.log(message);
+					console.log(event);
+				}
+			},
+
+			//我是监听 计算属性
+			computed: {
+				rescom: function () {
+					return (Number(vm.n) + Number(vm.n1)) * 3;
+				},
+				//字符串连接。
+				jisuan() {
+					return `www.baidu.com/${this.message}/${this.htmlsss}`;
+				}
+			},
+			//我是一个过滤器
+			filters: {
+				filtersTitleers: function (value) {
+					var c = value;
+					c = "我是一个过滤器";
+					return c;
+				}
+			},
+			//它可以用来监测Vue实例上的数据变动
+			watch: {
+				demo(val) {
+					this.value = this.demo;
+				},
+				watch11(val) {
+					this.watch11 = val + this.watch11
+				}
+			},
+
+			mounted() {
+				//页面初始化方法
+				$("body").resize();
+				console.log(this.$data);
+			},
+
+			beforeCreate() {
+				/* console.log("创建前：");
+				console.log(this.$data); */
+			},
+			beforeMount() {
+				/* console.log("挂载前：");
+				console.log(this.$data); */
+			},
+
+			beforeUpdate() {
+				/*console.log('=即将更新渲染=');
+				console.log(this.$data); */
+			},
+			created() {
+				console.log("创建完成：");
+				console.log(this.$data);
+			},
+			updated() {
+				console.log("==更新成功==");
+				console.log(this.$data);
+			},
+
+			beforeDestory() {
+				console.log("销毁前：");
+			},
+			destoryed() {
+				console.log("销毁完成：");
+			},
+		});
+
+
+
+
+
+
+
+
+
+		//父组件传值
+		Vue.component("mycomment", {
+			props: ['message', "tip"],
+			template: `<p>{{'父组件传值腹肌逐渐船体qqqqqqqqqqqqqqqqqqqqqq：'+message}}- {{bb}} -{{tip}}</p>`,
+			data: function () {
+				return {
+					qq: message,
+					bb: "abbbbbbb"
+				}
+			},
+			updated() {
+				console.log(this.$data + "````````````");
+			},
+			mounted() {
+				console.log(this.$data);
+			}
+		})
+
+		//组件1
+		var message = Vue.extend({
+			props: ["content"],
+			template: `<h1>VUE Element</h1>`
+		});
+		Vue.component("message", message);
+
+
+		//组件2
+		let html =
+			`<div>
+					<h3>{{title==1111}} {{title}}-{{content}}-{{desc}} - {{abcd}} - {{qw}}-{{trues}}</h3>
+					<el-button type="primary" plain @click='alert'>{{name}}</el-button>
+					<img :src="src" :class=[width]>
+				</div>`;
+		let html1 = `<p>这是一个测试文件</p>`;
+
+		var myconponent = Vue.component("myconent", {
+			props: ["title", "content", 'qw'],
+			data: function () {
+				return {
+					desc: "124",
+					abcd: "444444",
+					trues: true,
+					name: "组件事件",
+					src: 'dist/static/img/11.d25a6cc.gif',
+					width: "width"
+				}
+			},
+			template: html,
+			methods: {
+				alert: function () {
+					this.trues = !this.trues;
+					this.abcd = 12222;
+				}
+			},
+			created() {
+				console.log(this.$data);
+				// console.log("创建完成：");
+			},
+		})
+
+
+		//组件3
+		Vue.component("Elementui", {
+			props: [],
+			data: function () {
+				return {}
+			},
+			template: `<div class="row">
+					<div class="box-body no-padding" style="">
+						<ul class="nav nav-pills nav-stacked">
+							<li class="active"><a href="#"><i class="fa fa-inbox"></i> Inbox
+									<span class="label label-primary pull-right">12</span></a></li>
+							<li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
+						</ul>
+					</div>
+				</div>`,
+			//事件
+			methods: {
+
+			}
+		});
+
+
+		//*************事件处理器
+	</script>
+
+</body>
+<style scoped="">
+	.width {
+		width: 60px;
+	}
+</style>
+
+<style>
+	/* .slide-fade-enter-active {
+				.transition: all .3s ease;
+			}
+
+			.slide-fade-leave-active {
+				transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+			}
+
+			.slide-fade-enter,
+			.slide-fade-leave-active {
+				padding-left: 10px;
+				opacity: 0;
+			}
+			 */
+
+	.slide-fade-leave-active {
+		transition: opacity .3s ease;
+	}
+
+	.slide-fade-enter,
+	.slide-fade-leave-active {
+		opacity: 0;
+	}
+</style>
+
 </html>

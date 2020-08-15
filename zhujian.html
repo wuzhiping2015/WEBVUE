@@ -17,23 +17,22 @@
 <body>
 
   <div id="news">
-    <zhujian mess="hello" v-bind:mess="mess"></zhujian>
+    <zhujian v-bind:mess="mess"></zhujian>
 
     <input v-model="mess" />
 
     <ol>
-      <todos v-for="item in sites" v-bind:todo="item"> </todos>
+      <todos v-for="item in sites" :todo="item"> </todos>
     </ol>
 
 
-    <input type="number" v-model.number="age">
-    {{age}}
+    <input type="number" v-model.number="age"> {{age}}
     <input v-model.lazy="age">
     <input v-model.trim="age">
 
 
 
-    <runooob ceshi="添加一个测试文件" wd="wd"></runooob>
+    <runooob ceshi="我我我我我我我我我我我我我" wd="wd"></runooob>
 
 
     <input v-model.lazy="mess">
@@ -42,8 +41,13 @@
   </div>
 
   <script>
-
     let text = `<h1>一个测试文件<a href="#">{{ceshi}}</a>  {{wd}}</h1>`;
+
+    Vue.component("todos", {
+      props: ["todo"],
+      template: "<li>{{todo.text}}</li>"
+    })
+
 
     Vue.component('runooob', {
       props: ['ceshi', 'wd'],
@@ -56,26 +60,21 @@
       props: ['mess'], // PROPS 事件
     });
 
-    Vue.component("todos", {
-      props: ["todo"],
-      template: "<li>{{todo.text}}</li>"
-    })
-
     var vm = new Vue({
       el: "#news",
       data: {
-        mess: "111",
+        mess: "1111111111111111",
         wd: "一个大大测试文件",
         age: '',
         sites: [{
-          text: 'Runoob'
-        },
-        {
-          text: 'Google'
-        },
-        {
-          text: 'Taobao'
-        }
+            text: 'Runo111ob'
+          },
+          {
+            text: 'Goo111gle'
+          },
+          {
+            text: '111111'
+          }
         ]
       }
     })
@@ -93,7 +92,6 @@
   </div>
 
   <script>
-
     Vue.component('ceshijian', {
       template: '一个侧石问津'
     });
@@ -103,19 +101,20 @@
         z: "一个大的测试文件"
       }
     });
-	
-	function ispromise(val){
-		return (isDef(val) && typeof val.then==="function" && typeof val.catch=="function")
-	}
-	
-	function tostring(val){
-		return val=null ? "" :Array.isArray(val)|| (isPlainObject(val) && val.toString()===_tostring)?JSON.stringify(val,null,2):string(val)
-	}
-	
-	function tonumber(val){
-		var n=parseFloat(val);
-		return isNaN(n)?val:n;
-	}
+
+    function ispromise(val) {
+      return (isDef(val) && typeof val.then === "function" && typeof val.catch == "function")
+    }
+
+    function tostring(val) {
+      return val = null ? "" : Array.isArray(val) || (isPlainObject(val) && val.toString() === _tostring) ? JSON.stringify(
+        val, null, 2) : string(val)
+    }
+
+    function tonumber(val) {
+      var n = parseFloat(val);
+      return isNaN(n) ? val : n;
+    }
   </script>
 
 </body>

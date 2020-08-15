@@ -12,6 +12,7 @@
     "json:server:remote": "json-server http://jsonplaceholder.typicode.com/db"
   },
   "dependencies": {
+    "@types/node": "^14.0.27",
     "babel-plugin-component": "^1.1.1",
     "echarts": "^4.7.0",
     "element-ui": "^2.11.1",
