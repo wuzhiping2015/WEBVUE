@@ -10,7 +10,10 @@
 
 
 <script>
-  //这里引入一个JS 文件  //这是调用的方法 bt1, pi , Helios
+  //这里引入一个JS 文件
+  //这是调用的方法 bt1, pi , Helios
+  //这是调用的方法 bt1, pi , Helios
+  //这是调用的方法 bt1, pi , Helios
   import { bt1, pi, settino, Helios } from "@/assets/add.js";
   import Vue from "vue";
 
