@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<html xmlns="http://www.w3.org/1999/xhtml">
+
+			<head>
+				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+				<title>vue</title>
+			</head>
+			<script type="text/javascript" src="vue.js"></script>
+
+			<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+			<link rel="stylesheet" href="animate.min.css">
+	</head>
+
+	<body>
+
+		<div id="app">
+			<my a="一个简单测试文件"></my>
+			<my b="111111111" c="logo.png"></my>
+		</div>
+		<template id="myid">
+			<div>
+				<h1>
+					{{a}}
+					{{b}}
+					<img v-bind:src="c">
+				</h1>
+			</div>
+
+		</template>
+
+
+		<script>
+			const data = [{
+					"SiteInfoDate": []
+				},
+				{
+					"abc": []
+				},
+				{
+					"ced": []
+				}
+			];
+
+			console.log(data);
+
+
+			function insert(arr, index, data) {
+				for (let i = arr.length; i > index; i--) {
+					arr[i] = arr[i - 1];
+				}
+				arr[index] = data;
+			}
+			
+			class Node{
+				consstructor(key){
+					this.next=null;
+					this.key=key;
+				}
+			}
+			static createNode(key){
+				return new createNode(key);
+			}
+			
+			insert(node){
+				if(this.head){
+					node.next=this.head;
+				}
+				else{
+					node.next=null;
+				}
+				this.head=node;
+			}
+			
+			
+			
+			
+
+
+			Vue.component("my", {
+				template: "#myid",
+				props: ["a", "b", "c"]
+
+			})
+			var vm = new Vue({
+				el: "#app",
+			});
+		</script>
+
+
+
+
+
+	</body>
+
+</html>
