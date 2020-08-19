@@ -14,10 +14,6 @@
   
   
   
-  于是乎，在网上进行了搜索查找，成功的找到了这行神奇的命令
-npm cache clean --force
-  
-  发出npm install命令
   
   
   

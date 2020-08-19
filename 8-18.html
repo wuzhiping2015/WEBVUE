@@ -1,0 +1,104 @@
+<head>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>vue</title>
+    </head>
+    <script type="text/javascript" src="vue.js"></script>
+
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="animate.min.css">
+</head>
+
+<body style="position:absolute">
+    <div id="vm1">
+        {{massage}}
+        <button value="点击事件" @click="massage">点击事件</button>
+        <br />
+        <span v-once>这个不会改变- {{massage}}</span>
+        <br />
+        <input type="text" v-model="massage"><br />
+        {{reve}}
+        {{now}}
+        <h1>{{fullname}}</h1>
+
+        <p></p>
+        <button-counter></button-counter>
+    </div>
+
+    <script>
+
+
+
+
+
+
+
+        var data = {
+            massage: "测试一个文件",
+            fullname: "",
+        }
+
+        var app = new Vue({
+            el: "#vm1",
+            data: data,
+            methods: {},
+            computed: {
+                reve: function () {
+                    return 1 + 1 + this.massage;
+                },
+                now() {
+                    return Date.now();
+                }
+            },
+            created() {
+                this.message = "created"
+            }
+        });
+
+
+        Vue.component("button-counter", {
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: "<button @click='count++'>you click me {{count}}</button>"
+        })
+
+
+        app.massage = "wwwwwww";
+        Vue.nextTick(function () {
+            // app.$el.massage = "vue nextclick ";
+            console.log(1111111111);
+            console.log(app.massage);
+            app.massage = "rrrrrrr"
+        });
+
+
+
+        console.log(app.reve);
+
+        app.$watch("massage", function (val) {
+            this.fullname = this.massage + val + "888888888888"
+        });
+
+
+        /*  Vue.component("todo", {
+             props: ["todo"],
+             template: "<li>{{todo}}</li>"
+         });
+         app.$data === data;
+
+         // $watch 是一个实例方法
+         app.$el === document.getElementById("vm1");
+         app.$watch("a", function (newvalue, oldvalue) {
+             console.log(111);
+         }); */
+
+    </script>
+</body>
+
+
+</html>

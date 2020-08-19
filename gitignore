@@ -1,8 +1,19 @@
- 
+
+
+
+.gitignore
+
+
+### 以下表示忽略该文件夹，不提交到Git ###
+node_modules
+dist
+
+  *.[node_modules]
+  
+  // 忽略dbg文件和dbg目录
+node_modules
+
 /node_modules
 
-
-
-
-
+/dist
 
