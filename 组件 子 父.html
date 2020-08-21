@@ -60,29 +60,73 @@
     <p>{{ total }}</p>
     <br>
 
+    <div style="clear: both; height:520px">
+      <div style="border: 1px solid orange;width: 30%; float: left;">
+        <h1>第一个组件</h1>
+        <ceshimoban v-bind:msg="values"></ceshimoban>
+      </div>
+      <div style="border: 2px solid yellowgreen;width:30%;  float: left;">
+        <h1>第2个组件</h1>
+        {{c[0]['a']}}
+        <ceshimoban v-bind:el="html" v-bind:c="c[0]['a']" v-bind:d="c[0]['a']" v-bind:f="msg"></ceshimoban>
+      </div>
+      <div style="border: 1px solid red;width: 33%;  float: left;">
+        <h1>第3个组件</h1>
+        <ceshimoban v-bind:array="el" @incrementclick="incrementclick" @myevent="myzijiantongxin($event)"></ceshimoban>
 
-    <div style="border: 1px solid orange;width: 300px; float: left;">
-      <h1>第一个组件</h1>
-      <ceshimoban v-bind:msg="values"></ceshimoban>
+        <div style="border:1px solid red;">
+          <p>父子传递通信</p>
+          {{total}}
+          <BR/>这是一个返回 {{ fanhui}}
+        </div>
+      </div>
+    </div>
+    <div style="width:100%;"></div>
+    <div style="width:100%;border:1px solid red;">
+      <P>两个组件互通</P>
+      <div style="background:red;">
+        <weiuxinjianting v-show="isshow"></weiuxinjianting>
+      </div>
+      <br/>
+      <weiuxinjianting2>
+        <button @click="isshow=!isshow">显示隐藏-SLOT 控制</button>
+      </weiuxinjianting2>
+    </div>
+    <br>
+    <div class="slidebar">
+      <H1>keep-alive 保留数据：</H1>
+      <keep-alive>
+        <component :is="urltarget"></component>
+      </keep-alive>
 
+      <div style="border:1px solid blue;">
+        <home>
+          <div slot="chachao">匿名插槽 slot="chachao" -- 动态组件插槽</div>
+          <ul>
+            <li v-for="i in c">{{i}}</li>
+          </ul>
+        </home>
+      </div>
+
+      <ul>
+        <li @click="urltarget='home'">首页 {{urltarget}}</li>
+        <li @click="urltarget='LIST'">列表页</li>
+        <li @click="urltarget='SHOP'">购物车页面</li>
+      </ul>
     </div>
 
 
-    <div style="border: 2px solid yellowgreen;width: 300px; float: left;">
-      <h1>第2个组件</h1>
-      {{c[0]['a']}}
-      <ceshimoban v-bind:el="html" v-bind:c="c[0]['a']" v-bind:d="c[0]['a']" v-bind:f="msg"></ceshimoban>
 
-    </div>
-    <div style="border: 1px solid red;width: 300px; float: left;">
+    <div>
+      <h1>transition-group: </h1>
+      <transition-group>
 
-      <h1>第3个组件</h1>
-
-      <ceshimoban v-bind:array="el" @incrementclick="incrementclick" @myevent="myzijiantongxin"></ceshimoban>
-      {{total}}
-
+      </transition-group>
     </div>
 
+    <h1>filter: </h1>
+
+    {{msg | guolv}}
   </div>
   <script>
     let sum = (sun, sun2) => {
@@ -130,6 +174,61 @@
     },
     ]
 
+    var bus = new Vue();
+
+    Vue.filter("guolv", (data) => {
+        return data.replace("1111","--111串替换为abc")
+    });
+
+    Vue.component("weiuxinjianting", {
+      template: `<div>两个不同组件互通 一个微信 {{values}} {{calldat}}</div>`,
+      data: function () {
+        return {
+          values: 89,
+          calldat: "",
+        }
+      },
+      mounted() {
+        bus.$on("weixinjiantin", (data) => {
+          this.values += 2;
+          this.calldat = data;
+          console.log("我的消息加载了...");
+        });
+      }
+    });
+
+    Vue.component("weiuxinjianting2", {
+      template: `<div> 两个不同组件互通 我是一个监听微信
+            <input type="text" v-model="values">
+            <input type="text" ref="values">
+            <button @click="hadleClick()">发布</button>
+            <button @click="hadleClick1()">发布1</button>
+            /*  这里是一个插槽 */
+            <slot></slot> 
+        </div> `,
+      mounted() {
+        console.log("我加载了");
+      },
+      data: function () {
+        return {
+          values: 11,
+
+        }
+      },
+      methods: {
+        hadleClick() {
+          bus.$emit("weixinjiantin", this.values);
+        },
+        hadleClick1() {
+          bus.$emit("weixinjiantin", this.$refs.values.value);
+        }
+      }
+    })
+
+
+
+
+
     let TTThtml = `<div>
       <ul class="cf row-1">
       <li><a href="#www.sina.com.cn/" id="f5864" target="_blank">新浪</a> •
@@ -151,7 +250,6 @@
             <li v-for="arrs in array">{{arrs.value}}</li>
           </ul>
           <button @click="incrementHandler">子 父组件通信+1 &nbsp;  ( {{ values }})</button>
-
           <button @click="zujiantongxin">子 父组件通信-1  &nbsp; ({{ values }})</button>
 
      </div>`;
@@ -178,13 +276,19 @@
         }
       },
       beforeMount() {
-        console.log(this.$vnode.context)
+
       },
+      mounted() {
+
+      }
     })
+
+
 
     let vm = new Vue({
       el: "#big",
       data: {
+        isshow: true,
         total: 0,
         el: ddd,
         values: "新浪wewewewewe",
@@ -193,22 +297,69 @@
         adr: "set adr",
         value: "set value",
         html: ddd[0],
-        c: [{ a: 1 }, { b: 0 }]
+        c: [{ a: 1 }, { b: 0 }],
+        fanhui: "",
+        urltarget: "home",
       },
+      beforeCreate() {
+        console.log(11111)
+      },
+      created() {
+        console.log(2222)
+      },
+      beforeMount() {
+        console.log(3333)
+      },
+      mounted() {
+        console.log(4444)
+      },
+      updated() {
+        //更新
+        console.log(55555)
+      },
+
+
+
       methods: {
         incrementclick: function () {
           this.total += 1
         },
         myzijiantongxin(ev) {
           this.total -= 1;
-          console.log(this.total);
-          console.log(ev);
+          this.fanhui = ev;
+        },
+      },
+      components: {
+        "home": {
+          template: `<div><slot name="chachao"></slot><h1>HOME -动态组件</h1> <input type="text"></input></div>`
+        },
+        "LIST": {
+          template: `<div><H1>LIST</H1></div>`
+        },
+        "SHOP": {
+          template: `<div><H1>SHOP</H1></div>`
         }
       }
+
     });
   </script>
 
   <style>
+    .slidebar ul {
+      height: 30px;
+      line-height: 30px;
+    }
+
+    .slidebar li {
+      width: 33%;
+      background: #dedede;
+      font-size: 14px;
+      text-align: center;
+      float: left;
+      margin: 0px;
+      padding: 0px;
+    }
+
     body {
       margin: 10px;
       padding: 10px;
