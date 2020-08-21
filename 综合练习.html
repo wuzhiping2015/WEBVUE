@@ -10,7 +10,7 @@
   </head>
   <script type="text/javascript" src="src/assets/js/vue.js"></script>
 
-  <script type="text/javascript"  src="src/assets/js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="src/assets/js/jquery-3.4.1.min.js"></script>
   <link rel="stylesheet" href="src/assets/css/animate.min.css">
 </head>
 
@@ -46,8 +46,7 @@
 
 
 
-    <input placeholder="m" v-model="el[0].adr">
-    {{el[0]}}
+    <input placeholder="m" v-model="el[0].adr"> {{el[0]}}
 
 
 
@@ -74,11 +73,16 @@
 
     <div>
 
-      <label><input type="checkbox" value="新浪" v-model.lazy="check">新浪</label>
-      <label><input type="checkbox" value="空间" v-model.lazy="check">空间</label>
-      <label><input type="checkbox" value="复选框" v-model.lazy="check">复选框</label>
+      <label>
+        <input type="checkbox" value="新浪" v-model.lazy="check">新浪</label>
+      <label>
+        <input type="checkbox" value="空间" v-model.lazy="check">空间</label>
+      <label>
+        <input type="checkbox" value="复选框" v-model.lazy="check">复选框</label>
     </div>
-    <div>选中的是:<span v-show="check.length!=0">{{check}}-->{{check.length}}</span> </div>
+    <div>选中的是:
+      <span v-show="check.length!=0">{{check}}-->{{check.length}}</span>
+    </div>
 
     <input v-model="values">
 
@@ -87,14 +91,12 @@
 
 
     <div style="border: 1px solid orange;width: 300px; float: left;">
-       组件输入显示
+      组件输入显示
       <ceshimoban v-bind:msg="values"></ceshimoban>
 
     </div>
 
-
-
-  <!--  <div style="border: 2px solid yellowgreen;width: 300px; float: left;">
+    <!--  <div style="border: 2px solid yellowgreen;width: 300px; float: left;">
       组件控制显示隐藏
       <ceshimoban v-bind:el="html" v-bind:c="c[0]['a']" v-bind:d="c[0]['a']" v-bind:f="msg"></ceshimoban>
 
@@ -106,14 +108,20 @@
  -->
   </div>
   <script>
+
+
+
+
+
+
     let sum = (sun, sun2) => {
 
     }
-   /* let ab = [, 2, 3, 4, 5];
-
-    ab.forEach(element => (i, v) {
-      console.log(v);
-    }); */
+    /* let ab = [, 2, 3, 4, 5];
+ 
+     ab.forEach(element => (i, v) {
+       console.log(v);
+     }); */
 
 
     const a = "12";
@@ -203,14 +211,22 @@
         check: [],
         adr: "set adr",
         value: "set value",
-        html:ddd,
+        html: ddd,
         c: [{ a: 1 }, { b: 0 }]
       },
       methods: {
         incrementTotal: function () {
           this.total += 1
         }
+      },
+      beforeMount() {
+       
+      },
+      mounted() {
+       
       }
+
+
     });
   </script>
 

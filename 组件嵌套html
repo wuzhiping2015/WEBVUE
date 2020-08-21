@@ -17,10 +17,17 @@
 <body>
 
   <div id="app">
-    <zhujian></zhujian>
+
+    <quanjuzhujian myname="组件传递参数"></quanjuzhujian>
+
+    <quanjuzhujian :myname="myname"></quanjuzhujian>
+
+    <zhujianall></zhujianall>
+
+
     <zhujian1></zhujian1>
     <!-- 组件 -->
-    <my-comment></my-comment>
+
 
     <app-nav></app-nav>
     <app-slidebar></app-slidebar>
@@ -39,42 +46,11 @@
   </div>
 
 
-
-  <!-- <div id="news">
-    <bolg-post v-for="(i,t) in posts" v-bind:key="t.id" v-bind:title="t.title"></bolg-post>
-
-    </div>
-
-
-    <script>
-      var vm = new Vue({
-        el: "#news",
-        data: {
-          posts: [{
-              id: 1,
-              title: 'My journey with Vue'
-            },
-            {
-              id: 2,
-              title: 'Blogging with Vue'
-            },
-            {
-              id: 3,
-              title: 'Why Vue is so fun'
-            }
-          ]
-        }
-      });
-    </script> -->
-
   <script>
     var com1 = Vue.extend({
       template: "<h1>测试一个组件111111</h1>"
     });
     Vue.component("newcomponent", com1);
-
-
-
 
 
 
@@ -84,7 +60,7 @@
     }
 
     Vue.component("jczj", {
-      template: "<div class='一个测试基础组件'>{{cc}}{{mess}}</div>",
+      template: "<div class='一个测试基础组件'>{{cc}}{{mess}}</div>  ",
       data: function () {
         return data
       }
@@ -100,14 +76,25 @@
 
 
 
+    Vue.component("zhujianall", {
+      template: `<div style="border:1px solid blue;">
+           父子组件 叠加使用
+         <zhujian1></zhujian1>
+         <div style="padding:20px">
+          <dulizizujian></dulizizujian>
+         </div>
+        </div>`,
+      components: {
+        dulizizujian: {
+          template: `<div style="padding:5px;border:1px solid red;color:red">
+          我只属于内部我是一个独立的组件</div>`
 
-
-    Vue.component("zhujian", {
-      template: "<div>组件2222化开发</div>"
+        }
+      }
     });
 
     Vue.component("zhujian1", {
-      template: "<div>组件444444444444化开发</div>"
+      template: `<div style="padding:10px"> 111子组件被全部调用了</div>`
     });
 
     Vue.component("app-nav", {
@@ -123,30 +110,34 @@
 
 
     var headerTitle = {
-      template: "<h3>组件练习</h3>"
+      template: "<h3 style='color:red'>局部组件111111</h3> "
     }
     var headerContent = {
-      template: "<p>一个段落</p>"
+      template: "<p style='color:blue'>局部组件222222</p>"
     }
 
     var header = {
-      template: `<div class="hd">,
+      template: `<div class="hd" style="border:1px solid red;margin-bottom:10px;">,
                    <header-content></header-content>
+                   --{{myname}}
+                   --{{myname}}
+                   --{{myname}}---------
                    <header-title></header-title>
               </div>`,
-
       components: {
         "header-content": headerContent,
         "header-title": headerTitle
-      }
+      },
+      props: ["myname"]
+
     }
-
-
-
     var vm = new Vue({
       el: "#app",
       components: {
-        "my-comment": header
+        "quanjuzhujian": header
+      },
+      data: {
+        myname: "动态数据新的组件传递的参数"
       }
     })
   </script>
