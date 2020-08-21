@@ -25,9 +25,6 @@ Vue.use(Router) // 注册vue-router
 
 
 
-
-
-
 /* const router=new VueRouter({ */
 export default new Router({
 
@@ -165,6 +162,11 @@ export default new Router({
 					path: "/model",
 					name: "model",
 					component: () => import('@/model/home.vue')
+				},
+				{
+					path: "/zhonghe",
+					name: "zhonghe",
+					component: () => import('@/model/zhonghe.vue')
 				},
 
 

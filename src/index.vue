@@ -52,8 +52,10 @@
 				<router-link to="/ceshi" tag="li">魔板</router-link>
 				<router-link to="/anli" tag="li">案例1</router-link>
 				<router-link to="/shop" tag="li">商城</router-link>
-
 				<router-link to="/model" tag="li">移动端</router-link>
+
+
+			<router-link to="/zhonghe" tag="li">VUE 综合练习</router-link>
 			</ul>
 		</div>
 
@@ -78,8 +80,6 @@
 			<img src="@/assets/11.gif" style="display: block;width: 40px;	margin: 0 auto;" />
 		</div>
 
-
-
 		<chachao :title="title">
 			<p slot="left" class="left" @click="goto('/shop')"><b>插槽</b> shop</p>
 			<p slot="right" class="right" @click="goto('/erjiluyou')">插槽 login</p>
@@ -93,51 +93,45 @@
 		</transition>
 		<!--判断哪些显示 -->
 
-
-		<FOOT v-show="'/shop'!=$router.history.current.path"></FOOT>
+		<FOOT v-show="'/shop'!=$router.history.current.path">   </FOOT>
 
 	</div>
 
 </template>
 
 <script>
-	import {
-		Helios
-	} from "@/assets/comment.js";
-	import Vue from "vue";
+import { Helios } from "@/assets/comment.js";
+import Vue from "vue";
 
-	import chachao from '@/views/chachao.vue'
-	import FOOT from '@/views/FOOT'
-	import HEAD from '@/views/HEAD'
+import chachao from "@/views/chachao.vue";
+import FOOT from "@/views/FOOT";
+import HEAD from "@/views/HEAD";
 
-	import Router from 'vue-router'
+import Router from "vue-router";
 
+let data = {
+  ishow: false,
+  title: "首页我的订单",
+  /* src1: require('assets/images/a.gif'), */
+  imgsrc: "assets/images/a.gif"
+};
+let vm = new Vue({});
+let app = {};
 
-	let data = {
-		ishow: false,
-		title: "首页我的订单",
-		/* src1: require('assets/images/a.gif'), */
-		imgsrc: "assets/images/a.gif"
-	};
-	let vm = new Vue({});
-	let app = {};
+export default {
+  name: "dome",
+  data() {
+    app = this;
+    return data;
+  },
+  components: {
+    chachao,
+    FOOT,
+    HEAD
+  },
 
-	export default {
-		name: "dome",
-		data() {
-			app = this;
-			return data;
-		},
-		components: {
-			chachao,
-			FOOT,
-			HEAD
-		},
-
-
-		mounted() {
-
-			/*  console.log(99999999999999999);
+  mounted() {
+    /*  console.log(99999999999999999);
 			   window.addEventListener('hashchange', (e) => {
 			     var currentPath = window.location.hash.slice(1); // 获取输入的路由
 			     console.log(currentPath);
@@ -147,119 +141,112 @@
 			     }
 			   }, false); */
 
-			//JS 外部调用
-			Helios.login();
+    //JS 外部调用
+    Helios.login();
 
-			window.addEventListener(
-				"hashchange", e => {
-					console.log("2222222222222222");
-					console.log(e.oldURL);
-					console.log(e.newURL);
-					var currentPath = window.location.hash.slice(1); // 获取输入的路由
-					console.log(currentPath);
-					if (this.$router.path !== currentPath) {
-						this.$router.push(currentPath); // 动态跳转
-					}
-				},
-				false
-			);
+    window.addEventListener(
+      "hashchange",
+      e => {
+        console.log("2222222222222222");
+        console.log(e.oldURL);
+        console.log(e.newURL);
+        var currentPath = window.location.hash.slice(1); // 获取输入的路由
+        console.log(currentPath);
+        if (this.$router.path !== currentPath) {
+          this.$router.push(currentPath); // 动态跳转
+        }
+      },
+      false
+    );
 
-			/*  $("body").resize();
+    /*  $("body").resize();
 			   console.log(this.$data); */
-		},
+  },
 
+  methods: {
+    lihover() {
+      this.ishow = !this.ishow;
+      //  console.log(111);
+    },
+    invisible() {
+      this.ishow = !this.ishow;
+    },
 
-		methods: {
-			lihover() {
-				this.ishow = !this.ishow;
-				//  console.log(111);
-			},
-			invisible() {
-				this.ishow = !this.ishow;
-			},
+    index() {
+      this.$router.replace("/");
+    },
+    login() {
+      this.$router.replace("/login/temp");
+    },
+    Inde() {
+      this.$router.replace("/Index");
+      console.log(this);
+      console.log(vm);
+    },
 
-			index() {
-				this.$router.replace("/");
-			},
-			login() {
-				this.$router.replace("/login/temp");
-			},
-			Inde() {
+    goto(path) {
+      this.$router.replace(path);
+    },
+    JD() {
+      this.$router.replace("/jd");
+    }
+  },
+  beforeCreate() {
 
-				this.$router.replace("/Index");
-				console.log(this);
-				console.log(vm);
-			},
+    console.log(this.$router.history.current.path + "------ 路由地址");
 
-			goto(path) {
-				this.$router.replace(path);
-			},
-			JD() {
-				this.$router.replace("/jd");
-			},
-
-		},
-		beforeCreate() {
-
-			console.log(this.$router.history.current.path + "-------------");
-
-
-
-
-			/* console.log("创建前：");
+    /* console.log("创建前：");
 			     console.log(this.$data); */
-		},
-		created() {
-			// console.log("创建完成：");
-			//  console.log(this.$data);
-		},
-		beforeMount() {
-			/* console.log("挂载前：");
+  },
+  created() {
+    // console.log("创建完成：");
+    //  console.log(this.$data);
+  },
+  beforeMount() {
+    /* console.log("挂载前：");
 			    console.log(this.$data); */
-		},
+  },
 
-
-		beforeUpdate() {
-			/*console.log('=即将更新渲染=');
+  beforeUpdate() {
+    /*console.log('=即将更新渲染=');
 			    console.log(this.$data); */
-		},
-		updated() {
-			// console.log("==更新成功==");
-			// console.log(this.$data);
-		},
-		beforeDestory() {
-			/*console.log("销毁前："); */
-		},
-		destoryed() {
-			/*  console.log("销毁完成："); */
-		},
-		onLoad() {
-			//加载
-			this.init();
-		},
-		//事件
-		//我是一个过滤器
-		filters: {
-			filtersTitleers: function(value) {}
-		},
-		//我是监听器
-		computed: {},
-		//它可以用来监测Vue实例上的数据变动
-		watch: {}
-	};
+  },
+  updated() {
+    // console.log("==更新成功==");
+    // console.log(this.$data);
+  },
+  beforeDestory() {
+    /*console.log("销毁前："); */
+  },
+  destoryed() {
+    /*  console.log("销毁完成："); */
+  },
+  onLoad() {
+    //加载
+    this.init();
+  },
+  //事件
+  //我是一个过滤器
+  filters: {
+    filtersTitleers: function(value) {}
+  },
+  //我是监听器
+  computed: {},
+  //它可以用来监测Vue实例上的数据变动
+  watch: {}
+};
 </script>
 
 
 <style scoped>
-	/* @import 'https://unpkg.com/element-ui/lib/theme-chalk/index.css';
+/* @import 'https://unpkg.com/element-ui/lib/theme-chalk/index.css';
     @import 'https://getbootstrapadmin.com/remark/global/css/bootstrap.min.css?v4.0.2'; */
 
-	@import "assets/first-screen.chunk.css";
+@import "assets/first-screen.chunk.css";
 
-	@import "assets/bootstrap.css";
+@import "assets/bootstrap.css";
 
-
-	/* 	.v-enter,
+/* 	.v-enter,
 	.v-leave-to {
 		
 		opacity: 0;
@@ -267,117 +254,114 @@
 		position: absolute;
 	}
 	 */
-	.v-enter,
-		{
-		opacity: 0;
-		transform: translateX(100%);
-	}
+.v-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
 
-	.v-enter,
-		{
-		opacity: 1;
-		transform: translateX(-100%);
-	}
+.v-enter {
+  opacity: 1;
+  transform: translateX(-100%);
+}
 
-	.v-enter-active,
-	.v-leave-active {
-		/* .v-enter-active, .v-leave-active 设置的过渡样式
+.v-enter-active,
+.v-leave-active {
+  /* .v-enter-active, .v-leave-active 设置的过渡样式
 	    自动赋给transition 或 transitiongroup标签了 */
-		transition: all 0.6s ease;
-	}
+  transition: all 0.6s ease;
+}
 
+#dome {
+  padding: 4rem 0 4rem 0;
+}
 
-	#dome {
-		padding: 4rem 0 4rem 0;
-	}
+/* @import  'assets/element_index.css';  */
+.fr a {
+  margin-right: 20px;
+}
 
-	/* @import  'assets/element_index.css';  */
-	.fr a {
-		margin-right: 20px;
-	}
+.headertop {
+  height: 75px;
+}
 
-	.headertop {
-		height: 75px;
-	}
+.headertop span {
+  margin-right: 15px;
+}
 
-	.headertop span {
-		margin-right: 15px;
-	}
+.headertop span.on {
+  font-weight: bold;
+  color: red;
+}
 
-	.headertop span.on {
-		font-weight: bold;
-		color: red;
-	}
+#abcdef {
+  position: absolute;
+  left: 0px;
+  top: 20px;
+  display: node;
+  width: 80px;
+  background: #fff;
+  padding: 3px;
+}
 
-	#abcdef {
-		position: absolute;
-		left: 0px;
-		top: 20px;
-		display: node;
-		width: 80px;
-		background: #fff;
-		padding: 3px;
-	}
+#abcdef li {
+  width: 100px;
+}
 
-	#abcdef li {
-		width: 100px;
-	}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
 
-	.fade-enter-active,
-	.fade-leave-active {
-		transition: opacity 0.5s;
-	}
-
-	.fade-enter,
+.fade-enter,
 	.fade-leave-to
 
 	/* .fade-leave-active below version 2.1.8 */
-		{
-		opacity: 0;
-	}
+		 {
+  opacity: 0;
+}
 
-	.nav li {
-		float: left;
-		margin-right: 30px;
-		text-align: center;
-	}
+.nav li {
+  float: left;
+  margin-right: 30px;
+  text-align: center;
+}
 
-	.nav ul li {
-		height: 30px;
-		position: relative;
-		line-height: 30px;
-	}
+.nav ul li {
+  height: 30px;
+  position: relative;
+  line-height: 30px;
+}
 
-	.nav ul li ul {
-		position: absolute;
-		left: 8px;
-		top: 30px;
-		width: 94px !important;
-		text-align: left;
-		box-sizing: content-box;
-	}
+.nav ul li ul {
+  position: absolute;
+  left: 8px;
+  top: 30px;
+  width: 94px !important;
+  text-align: left;
+  box-sizing: content-box;
+}
 
-	.nav ul li ul li {
-		display: block;
-		float: none;
-		font-weight: 200;
-	}
+.nav ul li ul li {
+  display: block;
+  float: none;
+  font-weight: 200;
+}
 
-	ul li {
-		float: left;
-		margin-right: 40px;
-	}
+ul li {
+  float: left;
+  margin-right: 40px;
+}
 
-	.link {
-		padding: 20px;
-		height: 30px;
-		background: #DEDEDE;
-		color: #000;
-		margin-bottom: 20px;
-	}
+.link {
+  padding: 20px;
+  height: 30px;
+  background: #dedede;
+  color: #000;
+  margin-bottom: 20px;
+}
 
-	.link a {
-		float: left;
-		margin-right: 10px;
-	}
+.link a {
+  float: left;
+  margin-right: 10px;
+}
 </style>
