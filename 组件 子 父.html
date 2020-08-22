@@ -123,10 +123,19 @@
 
       </transition-group>
     </div>
+    <div>
+      <h1>filter----: </h1>
+      {{msg | guolv}}
+    </div>
 
-    <h1>filter: </h1>
 
-    {{msg | guolv}}
+    <div>
+
+      <h1>VUE 指令----: </h1>
+      <div v-hello> 测试一个指令</div>
+	  
+	   <div v-hello="'blue'"> 测试一个指令</div>
+    </div>
   </div>
   <script>
     let sum = (sun, sun2) => {
@@ -176,9 +185,6 @@
 
     var bus = new Vue();
 
-    Vue.filter("guolv", (data) => {
-        return data.replace("1111","--111串替换为abc")
-    });
 
     Vue.component("weiuxinjianting", {
       template: `<div>两个不同组件互通 一个微信 {{values}} {{calldat}}</div>`,
@@ -281,6 +287,23 @@
       mounted() {
 
       }
+    })
+
+
+
+
+
+    Vue.filter("guolv", (data) => {
+      return data.replace("1111", "--111串替换为abc")
+    });
+
+
+    Vue.directive("hello", {
+      inserted(el,bind) {
+        el.style.background = "red";
+        el.style.background=bind.value
+      }
+
     })
 
 
