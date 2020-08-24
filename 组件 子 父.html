@@ -20,8 +20,6 @@
     <input placeholder="m" v-model="el[0].adr"> {{el[0]}}
 
 
-
-
     <input v-model="el[0].adr" />
     <input v-model="el[0].value" />
 
@@ -79,6 +77,8 @@
           {{total}}
           <BR/>这是一个返回 {{ fanhui}}
         </div>
+
+
       </div>
     </div>
     <div style="width:100%;"></div>
@@ -133,8 +133,8 @@
 
       <h1>VUE 指令----: </h1>
       <div v-hello> 测试一个指令</div>
-	  
-	   <div v-hello="'blue'"> 测试一个指令</div>
+
+      <div v-hello="'blue'"> 测试一个指令</div>
     </div>
   </div>
   <script>
@@ -299,9 +299,9 @@
 
 
     Vue.directive("hello", {
-      inserted(el,bind) {
+      inserted(el, bind) {
         el.style.background = "red";
-        el.style.background=bind.value
+        el.style.background = bind.value
       }
 
     })
