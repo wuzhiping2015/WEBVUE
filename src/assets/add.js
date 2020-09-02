@@ -32,7 +32,7 @@ var toast = new Vue({}); //引入VUE 对象方法
 
 let StringUtil = {
 	//是否为空判断
-	isNull: function(text) {
+	isNull: function (text) {
 		if (undefined == text) {
 			return 33333333333;
 		}
@@ -41,12 +41,12 @@ let StringUtil = {
 		}
 		return 555555555555555;
 	},
-	btn: function() {
+	btn: function () {
 		alert("我是外部就是");
 		Vue.prototype.$message('这是一条消息提示');
 
 	},
-	btn1: function() {
+	btn1: function () {
 		sessionStorage.setItem('$SysType', "c");
 	}
 };
@@ -58,7 +58,7 @@ Vue.prototype.StringUtil = StringUtil;
 
 export default {
 	methods: {
-		ceshiyigewenjian: function(name) {
+		ceshiyigewenjian: function (name) {
 			return "你好" + name;
 		}
 	}
@@ -69,6 +69,7 @@ export default {
 
 export let pi = "我是外部一个变量";
 
+export let pi1122 = "ADD.JS 外部变量";
 
 export let settino = sessionStorage.getItem('$SysType');
 
@@ -83,7 +84,7 @@ export function bt1() {
 
 // 导出对象
 export let Helios = {
-	b2: function() {
+	b2: function () {
 
 		/* Vue.prototype.$message('对象事件方法'); */
 
@@ -95,14 +96,14 @@ export let Helios = {
 		});
 
 	},
-	b3: function() {
+	b3: function () {
 		return "对象事件一个变量"
 	},
 	b4(x, y) {
 		return x + y;
 	},
 	b5(x) {
-		setInterval(function() {
+		setInterval(function () {
 			if (10 < (x)) {
 				return x;
 			} else {
@@ -147,13 +148,10 @@ export let Helios = {
 			});
 		});
 
-
-
 		//   return c.a;
 	}
 
 }
-
 
 
 
@@ -169,13 +167,13 @@ export const wzp = {
 		return "我的数据表格"
 	},
 	ajaxbox(url, arrdata) {
-		var p = new Promise(function(resolve, reject) {
+		var p = new Promise(function (resolve, reject) {
 			$.ajax({
 				url: url,
 				dataType: "json",
 				type: "get",
 				//async: false,
-				success: function(data, status) {
+				success: function (data, status) {
 					var rsp = data;
 					resolve(rsp); //成功
 					reject(rsp); //失败
@@ -196,7 +194,7 @@ export const wzp = {
 						}
 					}
 				},
-				error: function(req, status, err) {
+				error: function (req, status, err) {
 					console.log(req);
 					console.log(status);
 					console.log(err);
@@ -209,11 +207,6 @@ export const wzp = {
 		});
 		return p;
 
-
 	}
-
-
-
-
 
 }

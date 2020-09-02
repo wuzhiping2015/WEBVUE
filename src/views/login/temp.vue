@@ -3,7 +3,7 @@
           <!-- 所有的动态页面，都在这里 -->
           <!--    <Index></Index> -->
       
-          <h1 style="text-align: center">登录</h1>
+          <h1 style="text-align: center">登录111111111111111</h1>
           <div> 姓名 <el-input v-model="name"></el-input>
           </div>
           <div> 密码 <el-input v-model="pass"></el-input>

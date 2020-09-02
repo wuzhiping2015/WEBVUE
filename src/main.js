@@ -3,6 +3,7 @@ import App from './App'
 /* import App from './App' */
 import router from './router' // 引入路由配置
 
+import store from './store' // vuex的使用 
 
 /* import $ from "./jquery"
 
@@ -132,7 +133,6 @@ Vue.use(ElementUI)
 
 
 
-
 import axios from 'axios' // npm 安装axios，数据请求
 import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios);
@@ -142,33 +142,41 @@ new Vue({
   el: '#app',
   router, //等价于 router: router
   i18n,
+  store,  //VUEx 控制器
   render: h => h(App), //重定义
   components: { App, },
   template: '<App/>'
 })
 
 //定义全局过去器
-Vue.filter('dCurrency', function(value) {
-  return '￥'+value
+Vue.filter('dCurrency', function (value) {
+  return '￥' + value
 })
 
-Vue.filter('dTofixed', function(value) {
+Vue.filter('dTofixed', function (value) {
   var isNum = parseFloat(value);
-  if( !isNum ){
-      alert("请输入数字")
-      return "请输入数字";
+  if (!isNum) {
+    alert("请输入数字")
+    return "请输入数字";
   } else {
-      var value = Math.round(isNum*100)/100;
-      var item = value.toString().split(".");
-      if(item.length == 1){
-          value = value.toString()+".00";
-          return value;
+    var value = Math.round(isNum * 100) / 100;
+    var item = value.toString().split(".");
+    if (item.length == 1) {
+      value = value.toString() + ".00";
+      return value;
+    }
+    if (item.length > 1) {
+      if (item[1].length < 2) {
+        value = value.toString() + "0";
       }
-      if(item.length > 1){
-          if(item[1].length < 2){
-              value = value.toString()+"0";
-          }
-          return value;
-      }
+      return value;
+    }
   }
 })
+
+
+
+
+export const ceshiyige = "main.js 外部事件导入";
+export const ceshi1 = "main.js ";
+

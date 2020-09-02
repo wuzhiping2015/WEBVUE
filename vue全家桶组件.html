@@ -128,16 +128,16 @@
 
 	<script>
 		/* Vue.component("mycomponent", {
-													template: `<div>测试一个工厂方式</div>`,
-													
-												}); */
+	template: `<div>测试一个工厂方式</div>`,
+	
+}); */
 
 		let va =
 			`<div class="FYB_RD">
 	<h1>WWWWWWWWWWWWWWWWWWWW</h1>	<h1>WWWWWWWWWWWWWWWWWWWW</h1>	<h1>WWWWWWWWWWWWWWWWWWWW</h1>
     </div>`;
 
-		let vm22=new Vue({
+		let vm22 = new Vue({
 			el: '#example',
 			data: {
 				show: true,
@@ -145,9 +145,9 @@
 				view11: '2222222'
 			},
 			created() {
-				/* this.$on("eat",function(fruit){
-					alert("1111111 自定义事件");
-				}); */
+				this.$on("eat", function (fruit) {
+					alert(fruit);
+				});
 			},
 			components: {
 				'v-a': {
@@ -179,20 +179,20 @@
 			watch12: `这不是你的错2222`,
 			checkboxtrue: false,
 			datalength: [{
-					a: "1",
-					b: "2",
-					c: "3"
-				},
-				{
-					a: "11",
-					b: "22",
-					c: "33"
-				},
-				{
-					a: "111",
-					b: "222",
-					c: "333"
-				},
+				a: "1",
+				b: "2",
+				c: "3"
+			},
+			{
+				a: "11",
+				b: "22",
+				c: "33"
+			},
+			{
+				a: "111",
+				b: "222",
+				c: "333"
+			},
 			],
 			checkdata: [],
 		}
@@ -296,11 +296,6 @@
 				console.log("销毁完成：");
 			},
 		});
-
-
-
-
-
 
 
 

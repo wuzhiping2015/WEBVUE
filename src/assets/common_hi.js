@@ -10,7 +10,6 @@ export default {
       return "点击外部返回数据";
     },
     msg1() {
-
       Vue.prototype.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -26,7 +25,6 @@ export default {
           message: '已取消删除'
         });
       });
-
       //  return 111111;
     }
   },

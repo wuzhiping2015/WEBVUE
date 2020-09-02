@@ -9,7 +9,6 @@
 					</li>
 					<router-link to="/Index" tag="li">首页</router-link>
 					<router-link to="/erjiluyou" tag="li">二级路由</router-link>
-
 					<li @mouseenter.stop="lihover" @mouseleave.stop="invisible" style="position: relative;">
 						二级路由
 						<ul v-show="ishow" v-if="ishow" id="abcdef">
@@ -41,7 +40,7 @@
 
 		<div class="link">
 			<ul>
-				<router-link to="/ceshi" tag="li">组件</router-link>
+				<router-link to="/ceshi" tag="li">组件传数值 JS 方法</router-link>
 				<router-link to="/ceshi1" tag="li">组件 通信 </router-link>
 				<router-link to="/suanfa" tag="li"> mixins 综合练习</router-link>
 				<router-link to="/jd" tag="li">JD</router-link>

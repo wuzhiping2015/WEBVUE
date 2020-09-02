@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1 style="text-align: center">登录WWWWWWWWWWWWWWWWWWWWWWWWW</h1>
     <ul>
       <template v-for="(item) in items">
         <li @mouseover="selectStyle (item) " :class="{'active':item.active}" @mouseout="outStyle(item)">
@@ -8,8 +9,6 @@
         </li>
       </template>
     </ul>
-
-
 
     <fieldset>
       <form action="">

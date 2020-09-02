@@ -17,7 +17,9 @@
 		data() {
 			app = this;
 			return data;
-		}
+		},
+
+
 	}
 </script>
 

@@ -1,6 +1,8 @@
 <template lang="html">
 	<div class="container">
-	 
+    <ul>
+      <li v-for="i in hobby3">{{i}}</li>
+    </ul>
 	</div>
 </template>
 
@@ -28,7 +30,7 @@ export default {
   },
 
   beforeMount() {
-    fetch("topology_alarm.json")
+    /*   fetch("topology_alarm.json")
       .then(res => {
         return res.json();
       })
@@ -36,7 +38,7 @@ export default {
         console.log(1111111111111111);
         console.log(res);
       })
-      .catch(err => {});
+      .catch(err => {}); */
   },
   mounted() {
     /*  fetch("topology_alarm.json").then(res => {
@@ -47,31 +49,17 @@ export default {
         console.log(res);
       })
 	  .catch(err => {}); */
-
-    this.$http.get("topology_alarm.json")
+    /*  this.$http.get("topology_alarm.json")
       .then(res => {
         console.log(res);
       })
       .then(res => {
         console.log(res);
       });
-    console.log(111111111);
+    console.log(111111111); */
   },
 
   created() {
-    /* fetch("elog_file.log")
-      .then(res => {
-        return res.json();
-      })
-      .then(res => {
-        console.log(44444444444444444);
-        console.log(res);
-      })
-      .catch(err => {}); */
-    /* this.$http.get('/api/goods').then((data) => {
-				this.items = data.body.data;
-			}) */
-
     this.$http.get("http://localhost:3000/todos").then(
       function(res) {
         app.hobby3 = res.data;
