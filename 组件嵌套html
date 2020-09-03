@@ -18,7 +18,7 @@
 
   <div id="app">
 
-    <quanjuzhujian myname="组件传递参数"></quanjuzhujian>
+    <quanjuzhujian myname="组件传递组件传组件传组件传参数"></quanjuzhujian>
 
     <quanjuzhujian :myname="myname"></quanjuzhujian>
 
