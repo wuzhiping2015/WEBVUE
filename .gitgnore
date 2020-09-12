@@ -2,6 +2,8 @@
 
 
 ### 以下表示忽略该文件夹，不提交到Git ###
+node_modules/
+
+node_modules/
+
 node_modules
-
-
